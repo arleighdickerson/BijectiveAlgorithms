@@ -21,14 +21,12 @@ SuccessiveCoordinates[lambda_] := Flatten[Reverse /@ Reverse[TransposeTableau[Co
 
 CoordinateRank[lambda_,i0_Integer,j0_Integer] := If[Length[#] == 0,0,First[#]] & @@ Position[SuccessiveCoordinates[lambda],{i0,j0},1,1]
 
-NextCoordinates[lambda_,i0_,j0_]:= If[
-	1 == i0 == j0,
-	{},
-	If[
-		i0 > 1, 
-		{i0 -1, j0},
-		{TransposePartition[lambda][[j0-1]],j0-1}
-	]
+NextCoordinates[lambda_,i0_,j0_,delta_]:= Module[{
+	coords = SuccessiveCoordinates[lambda],
+	index
+	},
+	index = First[Position[coords,{i0,j0},1,1]];
+	Flatten[First[coords[[index + delta]]]]
 ]
 
 PreviousCoordinates[lambda_,i0_,j0_]:= Module[{

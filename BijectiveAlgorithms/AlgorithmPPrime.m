@@ -8,17 +8,13 @@ AlgorithmPPrime::"bananas"
 
 Begin["`Private`"] (* Begin Private Context *) 
 FunctionPPrime[a_Integer,i0_Integer,j0_Integer]:=Function[{T},
-	Module[{
-		rank = CoordinateRank[T,#1,#2] &,
-		i1,
-		j1
-		},
+	Module[{i1,j1},
 		Assert[a > 0];
 
 		{i1,j1} = First[Position[T,a,2,1]];
 
 		If[
-			rank[i1,j1] >= rank[i0,j0],
+			i1 < i0 || (i1 == i0 && j1 <= j0),
 			T,
 			Module[{
 				b = If[j1 > j0,T[[i1,j1-1]],0],

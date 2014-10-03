@@ -11,3 +11,6 @@ Get["BijectiveAlgorithms`AlgorithmPPrime`"]
 
 Get["BijectiveAlgorithms`Algorithm1`"]
 Get["BijectiveAlgorithms`Algorithm1Prime`"]
+
+Get["BijectiveAlgorithms`Algorithm2`"]
+Get["BijectiveAlgorithms`Algorithm2Prime`"]
