@@ -1,6 +1,6 @@
 (* Mathematica Package *)
 
-BeginPackage["Algorithm1`",{"Predicates`","AlgorithmP`","Maps`"}]
+BeginPackage["Algorithm1`",{"Utils`","Predicates`","AlgorithmP`","Maps`"}]
 
 Algorithm1::"bananas bananas bananas"
 
@@ -10,7 +10,7 @@ Algorithm1[A_,f_,i0_,j0_]:=Module[{i1,j1,i2,j2,a,B,g},
 	Assert[Not[1 == i0 == j0]];
 	Assert[OrderedToQ[A,i0,j0]];
 
-	{i1,j1}=NextCoordinates[Shape[A],i0,j0,1];
+	{i1,j1}=NextCoordinate[Shape[A],i0,j0,1];
 	a = A[[i1,j1]];
 
 	B = AlgorithmP[A,a];

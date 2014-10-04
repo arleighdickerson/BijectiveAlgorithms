@@ -10,10 +10,13 @@ MapIJV::"bananas"
 MapIJ::"bananas"
 FilterIJV::"bananas"
 FilterIJ::"bananas"
+Shape::"bananas"
 
 Begin["`Private`"] (* Begin Private Context *) 
 
 Map2 = # @@@ Partition[#2, 2, 1] &;
+
+Shape[T_]:=Length /@ T;
 
 WeaklyIncreasingQ[i_List]:= If[
 	Length[i] < 2, 
