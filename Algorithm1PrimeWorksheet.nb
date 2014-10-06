@@ -1,0 +1,766 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     23016,        757]
+NotebookOptionsPosition[     22361,        731]
+NotebookOutlinePosition[     22689,        746]
+CellTagsIndexPosition[     22646,        743]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Get", "[", "\"\<BijectiveAlgorithms`\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fontSize", " ", "=", " ", "20"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.621356109940095*^9, 3.621356121630892*^9}, {
+   3.621356546646612*^9, 3.621356575711128*^9}, {3.62135669440646*^9, 
+   3.62135669554283*^9}, {3.621356741451069*^9, 3.6213567418103437`*^9}, {
+   3.6213572682595*^9, 3.621357271248538*^9}, 3.621357383297361*^9, {
+   3.621357498447359*^9, 3.621357523575206*^9}, {3.6213576784052887`*^9, 
+   3.6213576889554033`*^9}, {3.621422271603236*^9, 3.621422275138939*^9}, {
+   3.621422367116716*^9, 3.6214223699758244`*^9}, {3.6214227195119123`*^9, 
+   3.621422720766181*^9}, {3.6214249549752007`*^9, 3.621424957963602*^9}, {
+   3.621425143733989*^9, 3.6214251454716587`*^9}, {3.6214252148504*^9, 
+   3.6214252286868553`*^9}, {3.621433283562772*^9, 3.6214332973382807`*^9}, {
+   3.621433504600602*^9, 3.621433512228704*^9}, {3.621434762735648*^9, 
+   3.621434790227386*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"**", " ", "INITIALIZATION", " ", "**", "**", "**", "**", "**"}], 
+    "*", 
+    RowBox[{"**", "**"}]}], "******)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"T", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"6", ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", "3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"5", ",", "1"}], "}"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"i1", ",", "j1"}], "}"}], " ", "=", " ", 
+     RowBox[{"LeastCoordinate", "[", 
+      RowBox[{"Shape", "[", "T", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"g", " ", "=", " ", 
+     RowBox[{"0", "&"}]}], " ", ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"next", ":=", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"i1", ",", "j1"}], "}"}], " ", "\[NotEqual]", " ", 
+        RowBox[{"{", 
+         RowBox[{"1", ",", "1"}], "}"}]}], ",", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"T", ",", "g", ",", "i1", ",", "j1"}], "}"}], " ", "=", " ", 
+        
+        RowBox[{"Algorithm1", "[", 
+         RowBox[{"T", ",", "g", ",", "i1", ",", "j1"}], "]"}]}]}], "]"}]}], 
+    ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.621423197489922*^9, 3.621423200081354*^9}, {
+  3.621423271480907*^9, 3.621423312619186*^9}, {3.621425099362794*^9, 
+  3.621425132303442*^9}, {3.6214325110849247`*^9, 3.6214325237490187`*^9}, {
+  3.621433195007213*^9, 3.621433215653962*^9}, {3.621433247106941*^9, 
+  3.621433256334785*^9}, {3.621434148500042*^9, 3.621434223540023*^9}, {
+  3.621434253685285*^9, 3.62143425720958*^9}, {3.6214343221177263`*^9, 
+  3.6214343249579*^9}, {3.621434718118544*^9, 3.621434721092442*^9}, {
+  3.6214348852817307`*^9, 3.621434933208901*^9}, {3.621438571017622*^9, 
+  3.621438586525425*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "**", " ", "VISUALIZATION", " ", "**", "**", "**", "**", "**", "**", "**", 
+    "**"}], "******)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"PlotTableau", ":=", 
+     RowBox[{"Style", "[", 
+      RowBox[{
+       RowBox[{"Grid", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Function", "[", 
+          RowBox[{"row", ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Item", "[", 
+              RowBox[{"#", ",", 
+               RowBox[{"Frame", "\[Rule]", " ", "Black"}]}], "]"}], 
+             "\[IndentingNewLine]", "&"}], "/@", "row"}]}], "]"}], "/@", 
+         "T"}], "\[IndentingNewLine]", "]"}], ",", "fontSize"}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"PlotHook", ":=", 
+     RowBox[{"Style", "[", 
+      RowBox[{
+       RowBox[{"Grid", "[", 
+        RowBox[{
+         RowBox[{"Function", "[", 
+          RowBox[{"row", ",", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Item", "[", 
+              RowBox[{"#", ",", 
+               RowBox[{"Frame", " ", "\[Rule]", " ", "Black"}], ",", " ", 
+               RowBox[{"Alignment", "\[Rule]", "Right"}]}], "]"}], " ", "&"}],
+             " ", "/@", "row"}]}], "]"}], " ", "/@", " ", 
+         RowBox[{"MapIJ", "[", 
+          RowBox[{"g", ",", "T"}], "]"}]}], "]"}], ",", "fontSize"}], "]"}]}],
+     ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"IsHook", " ", ":=", " ", 
+     RowBox[{"HookQ", "[", 
+      RowBox[{"g", ",", 
+       RowBox[{"Shape", "[", "T", "]"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"draw", " ", ":=", " ", 
+     RowBox[{"Print", "[", 
+      RowBox[{
+      "PlotTableau", ",", "\"\< \>\"", ",", "PlotHook", ",", 
+       "\"\<IsHook: \>\"", ",", "IsHook"}], "]"}]}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.6214342498803*^9, 3.621434326542197*^9}, {
+  3.62143436846986*^9, 3.621434378532539*^9}, {3.6214344568654747`*^9, 
+  3.621434466179845*^9}, {3.62143510103841*^9, 3.621435108759385*^9}, {
+  3.621435233266584*^9, 3.6214352347021627`*^9}, {3.621439346317397*^9, 
+  3.621439363548439*^9}, {3.621439635579197*^9, 3.621439756157117*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "**", " ", "MAIN", " ", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+     "**", "**", "**", "**"}], "*****)"}], "\[IndentingNewLine]", 
+  RowBox[{"draw", ";", " ", 
+   RowBox[{"While", "[", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"Module", "[", 
+       RowBox[{
+        RowBox[{"{", "}"}], ",", 
+        RowBox[{"next", ";", "draw", ";"}]}], "]"}], ";", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"i1", ",", "j1"}], "}"}], " ", "\[NotEqual]", " ", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "1"}], "}"}]}]}], ")"}], "]"}], ";"}]}]], "Input",
+ CellChangeTimes->{{3.6214397573837147`*^9, 3.6214397711629744`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   StyleBox[
+    TagBox[GridBox[{
+       {
+        ItemBox["6",
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["2",
+         Frame->GrayLevel[0],
+         StripOnInput->False]},
+       {
+        ItemBox["4",
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["3",
+         Frame->GrayLevel[0],
+         StripOnInput->False]},
+       {
+        ItemBox["5",
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["1",
+         Frame->GrayLevel[0],
+         StripOnInput->False]}
+      },
+      AutoDelete->False,
+      GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+     
+     "Grid"],
+    StripOnInput->False,
+    FontSize->20], "\[InvisibleSpace]", "\<\" \"\>", "\[InvisibleSpace]", 
+   StyleBox[
+    TagBox[GridBox[{
+       {
+        ItemBox["0",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["0",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False]},
+       {
+        ItemBox["0",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["0",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False]},
+       {
+        ItemBox["0",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["0",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False]}
+      },
+      AutoDelete->False,
+      GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+     
+     "Grid"],
+    StripOnInput->False,
+    FontSize->20], "\[InvisibleSpace]", "\<\"IsHook: \"\>", 
+   "\[InvisibleSpace]", "True"}],
+  SequenceForm[
+   Style[
+    Grid[{{
+       Item[6, Frame -> GrayLevel[0]], 
+       Item[2, Frame -> GrayLevel[0]]}, {
+       Item[4, Frame -> GrayLevel[0]], 
+       Item[3, Frame -> GrayLevel[0]]}, {
+       Item[5, Frame -> GrayLevel[0]], 
+       Item[1, Frame -> GrayLevel[0]]}}], 20], " ", 
+   Style[
+    Grid[{{
+       Item[0, Frame -> GrayLevel[0], Alignment -> Right], 
+       Item[0, Frame -> GrayLevel[0], Alignment -> Right]}, {
+       Item[0, Frame -> GrayLevel[0], Alignment -> Right], 
+       Item[0, Frame -> GrayLevel[0], Alignment -> Right]}, {
+       Item[0, Frame -> GrayLevel[0], Alignment -> Right], 
+       Item[0, Frame -> GrayLevel[0], Alignment -> Right]}}], 20], "IsHook: ",
+    True],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.621439772362715*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   StyleBox[
+    TagBox[GridBox[{
+       {
+        ItemBox["6",
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["2",
+         Frame->GrayLevel[0],
+         StripOnInput->False]},
+       {
+        ItemBox["4",
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["1",
+         Frame->GrayLevel[0],
+         StripOnInput->False]},
+       {
+        ItemBox["5",
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["3",
+         Frame->GrayLevel[0],
+         StripOnInput->False]}
+      },
+      AutoDelete->False,
+      GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+     
+     "Grid"],
+    StripOnInput->False,
+    FontSize->20], "\[InvisibleSpace]", "\<\" \"\>", "\[InvisibleSpace]", 
+   StyleBox[
+    TagBox[GridBox[{
+       {
+        ItemBox["0",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["0",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False]},
+       {
+        ItemBox["0",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox[
+         RowBox[{"-", "1"}],
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False]},
+       {
+        ItemBox["0",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["0",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False]}
+      },
+      AutoDelete->False,
+      GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+     
+     "Grid"],
+    StripOnInput->False,
+    FontSize->20], "\[InvisibleSpace]", "\<\"IsHook: \"\>", 
+   "\[InvisibleSpace]", "True"}],
+  SequenceForm[
+   Style[
+    Grid[{{
+       Item[6, Frame -> GrayLevel[0]], 
+       Item[2, Frame -> GrayLevel[0]]}, {
+       Item[4, Frame -> GrayLevel[0]], 
+       Item[1, Frame -> GrayLevel[0]]}, {
+       Item[5, Frame -> GrayLevel[0]], 
+       Item[3, Frame -> GrayLevel[0]]}}], 20], " ", 
+   Style[
+    Grid[{{
+       Item[0, Frame -> GrayLevel[0], Alignment -> Right], 
+       Item[0, Frame -> GrayLevel[0], Alignment -> Right]}, {
+       Item[0, Frame -> GrayLevel[0], Alignment -> Right], 
+       Item[-1, Frame -> GrayLevel[0], Alignment -> Right]}, {
+       Item[0, Frame -> GrayLevel[0], Alignment -> Right], 
+       Item[0, Frame -> GrayLevel[0], Alignment -> Right]}}], 20], "IsHook: ",
+    True],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.621439772364156*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   StyleBox[
+    TagBox[GridBox[{
+       {
+        ItemBox["6",
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["1",
+         Frame->GrayLevel[0],
+         StripOnInput->False]},
+       {
+        ItemBox["4",
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["2",
+         Frame->GrayLevel[0],
+         StripOnInput->False]},
+       {
+        ItemBox["5",
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["3",
+         Frame->GrayLevel[0],
+         StripOnInput->False]}
+      },
+      AutoDelete->False,
+      GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+     
+     "Grid"],
+    StripOnInput->False,
+    FontSize->20], "\[InvisibleSpace]", "\<\" \"\>", "\[InvisibleSpace]", 
+   StyleBox[
+    TagBox[GridBox[{
+       {
+        ItemBox["0",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox[
+         RowBox[{"-", "2"}],
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False]},
+       {
+        ItemBox["0",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["0",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False]},
+       {
+        ItemBox["0",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["0",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False]}
+      },
+      AutoDelete->False,
+      GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+     
+     "Grid"],
+    StripOnInput->False,
+    FontSize->20], "\[InvisibleSpace]", "\<\"IsHook: \"\>", 
+   "\[InvisibleSpace]", "True"}],
+  SequenceForm[
+   Style[
+    Grid[{{
+       Item[6, Frame -> GrayLevel[0]], 
+       Item[1, Frame -> GrayLevel[0]]}, {
+       Item[4, Frame -> GrayLevel[0]], 
+       Item[2, Frame -> GrayLevel[0]]}, {
+       Item[5, Frame -> GrayLevel[0]], 
+       Item[3, Frame -> GrayLevel[0]]}}], 20], " ", 
+   Style[
+    Grid[{{
+       Item[0, Frame -> GrayLevel[0], Alignment -> Right], 
+       Item[-2, Frame -> GrayLevel[0], Alignment -> Right]}, {
+       Item[0, Frame -> GrayLevel[0], Alignment -> Right], 
+       Item[0, Frame -> GrayLevel[0], Alignment -> Right]}, {
+       Item[0, Frame -> GrayLevel[0], Alignment -> Right], 
+       Item[0, Frame -> GrayLevel[0], Alignment -> Right]}}], 20], "IsHook: ",
+    True],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.621439772366274*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   StyleBox[
+    TagBox[GridBox[{
+       {
+        ItemBox["6",
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["1",
+         Frame->GrayLevel[0],
+         StripOnInput->False]},
+       {
+        ItemBox["4",
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["2",
+         Frame->GrayLevel[0],
+         StripOnInput->False]},
+       {
+        ItemBox["3",
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["5",
+         Frame->GrayLevel[0],
+         StripOnInput->False]}
+      },
+      AutoDelete->False,
+      GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+     
+     "Grid"],
+    StripOnInput->False,
+    FontSize->20], "\[InvisibleSpace]", "\<\" \"\>", "\[InvisibleSpace]", 
+   StyleBox[
+    TagBox[GridBox[{
+       {
+        ItemBox["0",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox[
+         RowBox[{"-", "2"}],
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False]},
+       {
+        ItemBox["0",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["0",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False]},
+       {
+        ItemBox["1",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["0",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False]}
+      },
+      AutoDelete->False,
+      GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+     
+     "Grid"],
+    StripOnInput->False,
+    FontSize->20], "\[InvisibleSpace]", "\<\"IsHook: \"\>", 
+   "\[InvisibleSpace]", "True"}],
+  SequenceForm[
+   Style[
+    Grid[{{
+       Item[6, Frame -> GrayLevel[0]], 
+       Item[1, Frame -> GrayLevel[0]]}, {
+       Item[4, Frame -> GrayLevel[0]], 
+       Item[2, Frame -> GrayLevel[0]]}, {
+       Item[3, Frame -> GrayLevel[0]], 
+       Item[5, Frame -> GrayLevel[0]]}}], 20], " ", 
+   Style[
+    Grid[{{
+       Item[0, Frame -> GrayLevel[0], Alignment -> Right], 
+       Item[-2, Frame -> GrayLevel[0], Alignment -> Right]}, {
+       Item[0, Frame -> GrayLevel[0], Alignment -> Right], 
+       Item[0, Frame -> GrayLevel[0], Alignment -> Right]}, {
+       Item[1, Frame -> GrayLevel[0], Alignment -> Right], 
+       Item[0, Frame -> GrayLevel[0], Alignment -> Right]}}], 20], "IsHook: ",
+    True],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6214397723674917`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   StyleBox[
+    TagBox[GridBox[{
+       {
+        ItemBox["6",
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["1",
+         Frame->GrayLevel[0],
+         StripOnInput->False]},
+       {
+        ItemBox["2",
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["4",
+         Frame->GrayLevel[0],
+         StripOnInput->False]},
+       {
+        ItemBox["3",
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["5",
+         Frame->GrayLevel[0],
+         StripOnInput->False]}
+      },
+      AutoDelete->False,
+      GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+     
+     "Grid"],
+    StripOnInput->False,
+    FontSize->20], "\[InvisibleSpace]", "\<\" \"\>", "\[InvisibleSpace]", 
+   StyleBox[
+    TagBox[GridBox[{
+       {
+        ItemBox["0",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox[
+         RowBox[{"-", "2"}],
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False]},
+       {
+        ItemBox["1",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["0",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False]},
+       {
+        ItemBox["1",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["0",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False]}
+      },
+      AutoDelete->False,
+      GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+     
+     "Grid"],
+    StripOnInput->False,
+    FontSize->20], "\[InvisibleSpace]", "\<\"IsHook: \"\>", 
+   "\[InvisibleSpace]", "True"}],
+  SequenceForm[
+   Style[
+    Grid[{{
+       Item[6, Frame -> GrayLevel[0]], 
+       Item[1, Frame -> GrayLevel[0]]}, {
+       Item[2, Frame -> GrayLevel[0]], 
+       Item[4, Frame -> GrayLevel[0]]}, {
+       Item[3, Frame -> GrayLevel[0]], 
+       Item[5, Frame -> GrayLevel[0]]}}], 20], " ", 
+   Style[
+    Grid[{{
+       Item[0, Frame -> GrayLevel[0], Alignment -> Right], 
+       Item[-2, Frame -> GrayLevel[0], Alignment -> Right]}, {
+       Item[1, Frame -> GrayLevel[0], Alignment -> Right], 
+       Item[0, Frame -> GrayLevel[0], Alignment -> Right]}, {
+       Item[1, Frame -> GrayLevel[0], Alignment -> Right], 
+       Item[0, Frame -> GrayLevel[0], Alignment -> Right]}}], 20], "IsHook: ",
+    True],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6214397723686132`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   StyleBox[
+    TagBox[GridBox[{
+       {
+        ItemBox["1",
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["4",
+         Frame->GrayLevel[0],
+         StripOnInput->False]},
+       {
+        ItemBox["2",
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["5",
+         Frame->GrayLevel[0],
+         StripOnInput->False]},
+       {
+        ItemBox["3",
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["6",
+         Frame->GrayLevel[0],
+         StripOnInput->False]}
+      },
+      AutoDelete->False,
+      GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+     
+     "Grid"],
+    StripOnInput->False,
+    FontSize->20], "\[InvisibleSpace]", "\<\" \"\>", "\[InvisibleSpace]", 
+   StyleBox[
+    TagBox[GridBox[{
+       {
+        ItemBox["0",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox[
+         RowBox[{"-", "2"}],
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False]},
+       {
+        ItemBox["0",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["0",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False]},
+       {
+        ItemBox["1",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["0",
+         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False]}
+      },
+      AutoDelete->False,
+      GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+     
+     "Grid"],
+    StripOnInput->False,
+    FontSize->20], "\[InvisibleSpace]", "\<\"IsHook: \"\>", 
+   "\[InvisibleSpace]", "True"}],
+  SequenceForm[
+   Style[
+    Grid[{{
+       Item[1, Frame -> GrayLevel[0]], 
+       Item[4, Frame -> GrayLevel[0]]}, {
+       Item[2, Frame -> GrayLevel[0]], 
+       Item[5, Frame -> GrayLevel[0]]}, {
+       Item[3, Frame -> GrayLevel[0]], 
+       Item[6, Frame -> GrayLevel[0]]}}], 20], " ", 
+   Style[
+    Grid[{{
+       Item[0, Frame -> GrayLevel[0], Alignment -> Right], 
+       Item[-2, Frame -> GrayLevel[0], Alignment -> Right]}, {
+       Item[0, Frame -> GrayLevel[0], Alignment -> Right], 
+       Item[0, Frame -> GrayLevel[0], Alignment -> Right]}, {
+       Item[1, Frame -> GrayLevel[0], Alignment -> Right], 
+       Item[0, Frame -> GrayLevel[0], Alignment -> Right]}}], 20], "IsHook: ",
+    True],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.621439772369647*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1857, 1056},
+WindowMargins->{{0, Automatic}, {0, 0}},
+FrontEndVersion->"9.0 for Linux x86 (64-bit) (February 7, 2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 1102, 18, 77, "Input"],
+Cell[1662, 40, 1985, 52, 121, "Input"],
+Cell[3650, 94, 2240, 57, 209, "Input"],
+Cell[CellGroupData[{
+Cell[5915, 155, 698, 19, 55, "Input"],
+Cell[CellGroupData[{
+Cell[6638, 178, 2591, 89, 93, "Print"],
+Cell[9232, 269, 2617, 90, 93, "Print"],
+Cell[11852, 361, 2617, 90, 93, "Print"],
+Cell[14472, 453, 2619, 90, 93, "Print"],
+Cell[17094, 545, 2619, 90, 93, "Print"],
+Cell[19716, 637, 2617, 90, 93, "Print"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

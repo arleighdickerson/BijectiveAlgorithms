@@ -7,6 +7,7 @@ FillingQ::"bananas"
 HookQ::"bananas"
 OrderedToQ::"bananas"
 StandardQ::"bananas"
+HookBounds::"bananas"
 
 Begin["`Private`"] (* Begin Private Context *) 
 

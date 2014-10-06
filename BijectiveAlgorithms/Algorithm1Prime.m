@@ -6,10 +6,11 @@ Algorithm1Prime::"bananas"
 CandidateCells::"bananas"
 MaxCandidateCell::"bananas"
 FunctionNWPath::"bananas"
+ComparePaths::"bananas"
 
 Begin["`Private`"] (* Begin Private Context *) 
 
-CandidateCells[U_,g_,i1_Integer,j1_Integer]:= FilterIJV[
+CandidateCells[U_,g_,i1_Integer,j1_Integer]:= #[[3]] & /@ FilterIJV[
 	Function[{i,j,v},
 		i >= i1 && 
 		g[i,j1] >= 0 && 
@@ -24,60 +25,76 @@ west = "west";
 rules = {north -> 1, nothing -> 0, west -> -1};
 
 FunctionNWPath[T_,i0_Integer,j0_Integer]:=Function[a,
-	(*** TODO: Shouldn't need Rest ***) Rest[
-		Reverse[
-			Map2[
-				Function[{T0,T1},
-					First[Position[T0,a]] - First[Position[T1,a]] /. {
-						{1,0} -> north,
-						{0,1} -> west,
-						{0,0} -> nothing
-					}
-				],
-				FixedPointList[FunctionPPrime[a,i0,j0],T]
+		Map2[
+			Function[{T0,T1},
+				First[Position[T0,a]] - First[Position[T1,a]] /. {
+					{1,0} -> north,
+					{0,1} -> west,
+					{0,0} -> nothing
+				}
+			],
+			Drop[
+				FixedPointList[FunctionPPrime[a,i0,j0],T],
+				-1
 			]
-		]
 	]
 ]
 
-MaxNWPath[paths_List]:=Last[Sort[paths, (#1 /. rules) > (#2 /.rules) &]]
+ComparePaths[p0_List,p1_List]:= Module[{
+	(* PAD PATHS BEFORE GET VALUE *)
+	getValue = Function[{path,index},
+		Module[{
+			length = Max[Length /@ {p0,p1}]
+			},
+			PadLeft[path,length,nothing][[-index]] /. rules
+		]
+	],
+	compare
+	},
+	compare = Function[{index},
+		Module[{
+			v0 = getValue[p0,index],
+			v1 = getValue[p1,index]
+			},
+			If[
+				v0 == v1,
+				compare[index + 1],
+				If[v0 > v1,p0,p1]
+			]
+		]
+	];
+	compare[1]
+]
 
-PadPath[path_,length_] := PadLeft[path,length,nothing];
+MaxNWPath[paths_List]:=If[
+	Length[paths] > 1,
+	MaxNWPath[Drop[paths,If[ComparePaths[paths[[1]],paths[[2]]] == paths[[1]],1,2]]],
+	First[paths]
+]
 
 MaxCandidateCell[T_,g_,i0_,j0_] := Module[{
 		candidates = CandidateCells[T,g,i0,j0],
-		f = FunctionNWPath[T,i0,j0],
-		maxCandidate = {},
-		paths,
-		maxPath,
-		pad
+		f = FunctionNWPath[T,i0,j0]
 	},
-
-	paths = f /@ (#[[3]] & /@ candidates);
-
-	Assert[Length[paths] > 0];
-	Assert[Max[Length /@ paths] > 0];
-	pad = PadPath[#,Max[Length /@ paths]] &;
-	paths = pad /@ paths;
-	maxPath = MaxNWPath[paths];
-	
-	For[i = 1, i <= Length[candidates], i++, 
-		If[
-			pad[f[candidates[[i]][[3]]]] == maxPath,
-			maxCandidate = candidates[[i]]
-		]
-	];
-	Assert[maxCandidate != {}];
-	maxCandidate
+	First[Sort[candidates,ComparePaths[f[#1],f[#2]]&] ];
 ]
 
-Algorithm1Prime[T_,g_: (0 &) ,i0_:1,j0_:1]:=Module[{i1,j1,p,U,f,prev},
+Algorithm1Prime[T_,g_,i0_:1,j0_:1]:=Module[{i1,j1,p,U,f,prev},
 	{i1,j1,p} = MaxCandidateCell[T,g,i0,j0];
 	prev = NextCoordinates[Shape[T],i0,j0,-1];
 	U = AlgorithmPPrime[T,p,i0,j0];
-	f[i_,j_]:=g[i,j];
-	For[i = i0 + 1, i <= i1, i++, f[i,j0] = g[i - 1, j0] + 1];
-	f[i0,j0] = 0;
+	f = Table[
+   		If[
+   			j == j0 && i0 <= i <= i1 ,
+    		If[
+    			i == i0, 
+    			0, 
+    			g[i - 1, j0] + 1
+    		],
+    		g[i, j]
+    	], 
+    	{i, 1, Length[T]}, {j, 1, Length[T][[i]]}
+    ][[#1.#2]] &;
 	{U,f,prev[[1]],prev[[2]]}
 ]
 

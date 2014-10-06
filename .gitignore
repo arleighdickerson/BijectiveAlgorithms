@@ -30,7 +30,7 @@ local.properties
 .texlipse
 
 # Notebook Files
-*.nb
+#*.nb
 
 # Eclipse Project dir
 .project

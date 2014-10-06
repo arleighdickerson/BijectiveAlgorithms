@@ -5,11 +5,13 @@ BeginPackage["Maps`", { "Combinatorica`","Utils`"}]
 CoordinateRank::"bananas"
 NextCoordinate::"bananas"
 LeastCoordinate::"bananas"
+Coordinates::"bananas"
+SuccessiveCoordinates::"bananas"
 
 Begin["`Private`"] (* Begin Private Context *) 
 
 Coordinates[lambda_] := Flatten[
-	MapIJV[
+	MapIJ[
 		{#1,#2} &, 
 		Table[0,{#}] & /@ lambda
 	],1
