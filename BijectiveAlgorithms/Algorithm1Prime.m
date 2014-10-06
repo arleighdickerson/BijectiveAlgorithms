@@ -7,6 +7,7 @@ CandidateCells::"bananas"
 MaxCandidateCell::"bananas"
 FunctionNWPath::"bananas"
 ComparePaths::"bananas"
+MaxNWPath::"bla"
 
 Begin["`Private`"] (* Begin Private Context *) 
 
@@ -40,48 +41,38 @@ FunctionNWPath[T_,i0_Integer,j0_Integer]:=Function[a,
 	]
 ]
 
-ComparePaths[p0_List,p1_List]:= Module[{
-	(* PAD PATHS BEFORE GET VALUE *)
-	getValue = Function[{path,index},
-		Module[{
-			length = Max[Length /@ {p0,p1}]
-			},
-			PadLeft[path,length,nothing][[-index]] /. rules
-		]
-	],
-	compare
-	},
-	compare = Function[{index},
-		Module[{
-			v0 = getValue[p0,index],
-			v1 = getValue[p1,index]
-			},
-			If[
-				v0 == v1,
-				compare[index + 1],
-				If[v0 > v1,p0,p1]
-			]
-		]
-	];
-	compare[1]
-]
-
 MaxNWPath[paths_List]:=If[
-	Length[paths] > 1,
-	MaxNWPath[Drop[paths,If[ComparePaths[paths[[1]],paths[[2]]] == paths[[1]],1,2]]],
-	First[paths]
+	Length[paths] < 2, 
+	First[paths], 
+ 	Module[{
+ 		convert = Function[{path}, 
+     		Reverse[
+     			PadLeft[
+     				path, 
+     				Max[Length /@ paths], 
+     				nothing
+     			]
+     		] /. rules
+ 		],
+ 		dict
+ 	},
+ 	Do[dict[convert[path]] = path,{path,paths}];
+ 	dict[First[Sort[convert /@ paths]]]
+	]
 ]
 
 MaxCandidateCell[T_,g_,i0_,j0_] := Module[{
 		candidates = CandidateCells[T,g,i0,j0],
 		f = FunctionNWPath[T,i0,j0]
 	},
-	First[Sort[candidates,ComparePaths[f[#1],f[#2]]&] ];
+	Do[dict[f[candidate]] = candidate,{candidate,candidates}];
+	dict[MaxNWPath[f /@ candidates]]
 ]
 
 Algorithm1Prime[T_,g_,i0_:1,j0_:1]:=Module[{i1,j1,p,U,f,prev},
-	{i1,j1,p} = MaxCandidateCell[T,g,i0,j0];
-	prev = NextCoordinates[Shape[T],i0,j0,-1];
+	p = MaxCandidateCell[T,g,i0,j0];
+	{i1,j1} = Flatten[Position[T,p]];
+	prev = NextCoordinate[Shape[T],i0,j0,-1];
 	U = AlgorithmPPrime[T,p,i0,j0];
 	f = Table[
    		If[

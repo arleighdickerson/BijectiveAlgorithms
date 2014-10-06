@@ -1,23 +1,6 @@
-(* Content-type: application/vnd.wolfram.mathematica *)
-
-(*** Wolfram Notebook File ***)
-(* http://www.wolfram.com/nb *)
-
-(* CreatedBy='Mathematica 9.0' *)
-
-(*CacheID: 234*)
-(* Internal cache information:
-NotebookFileLineBreakTest
-NotebookFileLineBreakTest
-NotebookDataPosition[       157,          7]
-NotebookDataLength[     23024,        757]
-NotebookOptionsPosition[     22361,        731]
-NotebookOutlinePosition[     22697,        746]
-CellTagsIndexPosition[     22654,        743]
-WindowFrame->Normal*)
-
-(* Beginning of Notebook Content *)
 Notebook[{
+
+Cell[CellGroupData[{
 Cell[BoxData[{
  RowBox[{"ClearAll", "[", "\"\<Global`\>\"", "]"}], "\[IndentingNewLine]", 
  RowBox[{
@@ -37,6 +20,18 @@ Cell[BoxData[{
    3.6214252286868553`*^9}, {3.621433283562772*^9, 3.6214332973382807`*^9}, {
    3.621433504600602*^9, 3.621433512228704*^9}, {3.621434762735648*^9, 
    3.621434790227386*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "compat"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Combinatorica Graph and Permutations functionality has \
+been superseded by preloaded functionality. The package now being loaded may \
+conflict with this. Please see the Compatibility Guide for details.\"\>"}]], \
+"Message", "MSG",
+ CellChangeTimes->{3.621596348991068*^9}]
+}, Open  ]],
 
 Cell[BoxData[
  RowBox[{
@@ -265,7 +260,7 @@ Cell[BoxData[
        Item[0, Frame -> GrayLevel[0], Alignment -> Right]}}], 20], "IsHook: ",
     True],
   Editable->False]], "Print",
- CellChangeTimes->{3.621439772362715*^9}],
+ CellChangeTimes->{3.621439772362715*^9, 3.621596384833634*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -357,7 +352,7 @@ Cell[BoxData[
        Item[0, Frame -> GrayLevel[0], Alignment -> Right]}}], 20], "IsHook: ",
     True],
   Editable->False]], "Print",
- CellChangeTimes->{3.621439772364156*^9}],
+ CellChangeTimes->{3.621439772362715*^9, 3.621596384841401*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -449,7 +444,7 @@ Cell[BoxData[
        Item[0, Frame -> GrayLevel[0], Alignment -> Right]}}], 20], "IsHook: ",
     True],
   Editable->False]], "Print",
- CellChangeTimes->{3.621439772366274*^9}],
+ CellChangeTimes->{3.621439772362715*^9, 3.6215963848439293`*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -541,7 +536,7 @@ Cell[BoxData[
        Item[0, Frame -> GrayLevel[0], Alignment -> Right]}}], 20], "IsHook: ",
     True],
   Editable->False]], "Print",
- CellChangeTimes->{3.6214397723674917`*^9}],
+ CellChangeTimes->{3.621439772362715*^9, 3.621596384845028*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -633,7 +628,7 @@ Cell[BoxData[
        Item[0, Frame -> GrayLevel[0], Alignment -> Right]}}], 20], "IsHook: ",
     True],
   Editable->False]], "Print",
- CellChangeTimes->{3.6214397723686132`*^9}],
+ CellChangeTimes->{3.621439772362715*^9, 3.621596384846098*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -725,42 +720,12 @@ Cell[BoxData[
        Item[0, Frame -> GrayLevel[0], Alignment -> Right]}}], 20], "IsHook: ",
     True],
   Editable->False]], "Print",
- CellChangeTimes->{3.621439772369647*^9}]
+ CellChangeTimes->{3.621439772362715*^9, 3.621596384847082*^9}]
 }, Open  ]]
 }, Open  ]]
 },
 WindowSize->{1857, 1056},
-WindowMargins->{{0, Automatic}, {0, Automatic}},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 FrontEndVersion->"9.0 for Linux x86 (64-bit) (February 7, 2013)",
 StyleDefinitions->"Default.nb"
 ]
-(* End of Notebook Content *)
-
-(* Internal cache information *)
-(*CellTagsOutline
-CellTagsIndex->{}
-*)
-(*CellTagsIndex
-CellTagsIndex->{}
-*)
-(*NotebookFileOutline
-Notebook[{
-Cell[557, 20, 1102, 18, 77, "Input"],
-Cell[1662, 40, 1985, 52, 121, "Input"],
-Cell[3650, 94, 2240, 57, 209, "Input"],
-Cell[CellGroupData[{
-Cell[5915, 155, 698, 19, 55, "Input"],
-Cell[CellGroupData[{
-Cell[6638, 178, 2591, 89, 93, "Print"],
-Cell[9232, 269, 2617, 90, 93, "Print"],
-Cell[11852, 361, 2617, 90, 93, "Print"],
-Cell[14472, 453, 2619, 90, 93, "Print"],
-Cell[17094, 545, 2619, 90, 93, "Print"],
-Cell[19716, 637, 2617, 90, 93, "Print"]
-}, Open  ]]
-}, Open  ]]
-}
-]
-*)
-
-(* End of internal cache information *)
