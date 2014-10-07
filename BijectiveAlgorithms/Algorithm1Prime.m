@@ -14,8 +14,8 @@ Begin["`Private`"] (* Begin Private Context *)
 CandidateCells[U_,g_,i1_Integer,j1_Integer]:= #[[3]] & /@ FilterIJV[
 	Function[{i,j,v},
 		i >= i1 && 
-		g[i,j1] >= 0 && 
-		j == (j1 + g[i,j1])
+		g[[i,j1]] >= 0 && 
+		j == (j1 + g[[i,j1]])
 	],U
 ]
 
@@ -80,12 +80,12 @@ Algorithm1Prime[T_,g_,i0_:1,j0_:1]:=Module[{i1,j1,p,U,f,prev},
     		If[
     			i == i0, 
     			0, 
-    			g[i - 1, j0] + 1
+    			g[[i - 1, j0]] + 1
     		],
-    		g[i, j]
+    		g[[i, j]]
     	], 
-    	{i, 1, Length[T]}, {j, 1, Length[T][[i]]}
-    ][[#1.#2]] &;
+    	{i, 1, Length[T]}, {j, 1, Length[T[[i]]]}
+    ];
 	{U,f,prev[[1]],prev[[2]]}
 ]
 

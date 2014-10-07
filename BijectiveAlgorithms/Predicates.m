@@ -31,15 +31,19 @@ HookBounds[lambda:_?ShapeQ]:=Table[
 	{j,1,lambda[[i]]}
 ];
 
-HookQ[f_,lambda_]:=And @@ Flatten[
-		Table[
-			Module[{bounds = HookBounds[lambda,i,j]},
-				bounds[[1]]<= f[i,j] <= bounds[[2]]
+HookQ[f_Function,lambda_]:=And @@ Flatten[
+	Table[
+		Module[{
+			bounds = HookBounds[lambda,i,j]
+			},
+			bounds[[1]]<= f[i,j] <= bounds[[2]]
 			],
 			{i,1,Length[lambda]},
 			{j,1,lambda[[i]]}
-		]
+	]
 ];
+
+HookQ[f_List,lambda_]:=HookQ[f[[#1,#2]] &,lambda];
 
 wildcard = "*";
 WeaklyIncreasingOrWildcardQ[i_]:=And @@ Map2[#1 == wildcard || #2 == wildcard || #1 <= #2 &,i];

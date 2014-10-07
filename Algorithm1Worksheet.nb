@@ -1,6 +1,4 @@
 Notebook[{
-
-Cell[CellGroupData[{
 Cell[BoxData[{
  RowBox[{"ClearAll", "[", "\"\<Global`\>\"", "]"}], "\[IndentingNewLine]", 
  RowBox[{
@@ -8,6 +6,7 @@ Cell[BoxData[{
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"fontSize", " ", "=", " ", "20"}], ";"}]}], "Input",
+ InitializationCell->True,
  CellChangeTimes->{{3.621356109940095*^9, 3.621356121630892*^9}, {
    3.621356546646612*^9, 3.621356575711128*^9}, {3.62135669440646*^9, 
    3.62135669554283*^9}, {3.621356741451069*^9, 3.6213567418103437`*^9}, {
@@ -20,18 +19,6 @@ Cell[BoxData[{
    3.6214252286868553`*^9}, {3.621433283562772*^9, 3.6214332973382807`*^9}, {
    3.621433504600602*^9, 3.621433512228704*^9}, {3.621434762735648*^9, 
    3.621434790227386*^9}}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"General", "::", "compat"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Combinatorica Graph and Permutations functionality has \
-been superseded by preloaded functionality. The package now being loaded may \
-conflict with this. Please see the Compatibility Guide for details.\"\>"}]], \
-"Message", "MSG",
- CellChangeTimes->{3.621596348991068*^9}]
-}, Open  ]],
 
 Cell[BoxData[
  RowBox[{
@@ -60,7 +47,17 @@ Cell[BoxData[
       RowBox[{"Shape", "[", "T", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"g", " ", "=", " ", 
-     RowBox[{"0", "&"}]}], " ", ";"}], "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"next", ":=", 
      RowBox[{"If", "[", 
@@ -77,6 +74,7 @@ Cell[BoxData[
         RowBox[{"Algorithm1", "[", 
          RowBox[{"T", ",", "g", ",", "i1", ",", "j1"}], "]"}]}]}], "]"}]}], 
     ";"}]}]}]], "Input",
+ InitializationCell->True,
  CellChangeTimes->{{3.621423197489922*^9, 3.621423200081354*^9}, {
   3.621423271480907*^9, 3.621423312619186*^9}, {3.621425099362794*^9, 
   3.621425132303442*^9}, {3.6214325110849247`*^9, 3.6214325237490187`*^9}, {
@@ -85,7 +83,7 @@ Cell[BoxData[
   3.621434253685285*^9, 3.62143425720958*^9}, {3.6214343221177263`*^9, 
   3.6214343249579*^9}, {3.621434718118544*^9, 3.621434721092442*^9}, {
   3.6214348852817307`*^9, 3.621434933208901*^9}, {3.621438571017622*^9, 
-  3.621438586525425*^9}}],
+  3.621438586525425*^9}, {3.6216745183912363`*^9, 3.621674536700542*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -114,20 +112,18 @@ Cell[BoxData[
     RowBox[{"PlotHook", ":=", 
      RowBox[{"Style", "[", 
       RowBox[{
-       RowBox[{"Grid", "[", 
+       RowBox[{"Grid", "[", "\[IndentingNewLine]", 
         RowBox[{
          RowBox[{"Function", "[", 
-          RowBox[{"row", ",", 
+          RowBox[{"row", ",", "\[IndentingNewLine]", 
            RowBox[{
             RowBox[{
              RowBox[{"Item", "[", 
               RowBox[{"#", ",", 
-               RowBox[{"Frame", " ", "\[Rule]", " ", "Black"}], ",", " ", 
-               RowBox[{"Alignment", "\[Rule]", "Right"}]}], "]"}], " ", "&"}],
-             " ", "/@", "row"}]}], "]"}], " ", "/@", " ", 
-         RowBox[{"MapIJ", "[", 
-          RowBox[{"g", ",", "T"}], "]"}]}], "]"}], ",", "fontSize"}], "]"}]}],
-     ";"}], "\[IndentingNewLine]", 
+               RowBox[{"Frame", "\[Rule]", " ", "Black"}]}], "]"}], 
+             "\[IndentingNewLine]", "&"}], "/@", "row"}]}], "]"}], "/@", 
+         "g"}], "\[IndentingNewLine]", "]"}], ",", "fontSize"}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"IsHook", " ", ":=", " ", 
      RowBox[{"HookQ", "[", 
@@ -140,11 +136,14 @@ Cell[BoxData[
       RowBox[{
       "PlotTableau", ",", "\"\< \>\"", ",", "PlotHook", ",", 
        "\"\<IsHook: \>\"", ",", "IsHook"}], "]"}]}], ";"}]}]}]], "Input",
+ InitializationCell->True,
  CellChangeTimes->{{3.6214342498803*^9, 3.621434326542197*^9}, {
   3.62143436846986*^9, 3.621434378532539*^9}, {3.6214344568654747`*^9, 
   3.621434466179845*^9}, {3.62143510103841*^9, 3.621435108759385*^9}, {
   3.621435233266584*^9, 3.6214352347021627`*^9}, {3.621439346317397*^9, 
-  3.621439363548439*^9}, {3.621439635579197*^9, 3.621439756157117*^9}}],
+  3.621439363548439*^9}, {3.621439635579197*^9, 3.621439756157117*^9}, {
+  3.621674556671694*^9, 3.6216745595280657`*^9}, {3.621674594132127*^9, 
+  3.621674596893118*^9}}],
 
 Cell[CellGroupData[{
 
@@ -208,29 +207,30 @@ Cell[BoxData[
     TagBox[GridBox[{
        {
         ItemBox["0",
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False], 
         ItemBox["0",
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False]},
        {
         ItemBox["0",
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False], 
         ItemBox["0",
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False]},
        {
         ItemBox["0",
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False], 
         ItemBox["0",
-         Alignment->Right,
+         Frame->GrayLevel[0],
+         StripOnInput->False]},
+       {
+        ItemBox["0",
+         Frame->GrayLevel[0],
+         StripOnInput->False], 
+        ItemBox["0",
          Frame->GrayLevel[0],
          StripOnInput->False]}
       },
@@ -252,15 +252,17 @@ Cell[BoxData[
        Item[1, Frame -> GrayLevel[0]]}}], 20], " ", 
    Style[
     Grid[{{
-       Item[0, Frame -> GrayLevel[0], Alignment -> Right], 
-       Item[0, Frame -> GrayLevel[0], Alignment -> Right]}, {
-       Item[0, Frame -> GrayLevel[0], Alignment -> Right], 
-       Item[0, Frame -> GrayLevel[0], Alignment -> Right]}, {
-       Item[0, Frame -> GrayLevel[0], Alignment -> Right], 
-       Item[0, Frame -> GrayLevel[0], Alignment -> Right]}}], 20], "IsHook: ",
-    True],
+       Item[0, Frame -> GrayLevel[0]], 
+       Item[0, Frame -> GrayLevel[0]]}, {
+       Item[0, Frame -> GrayLevel[0]], 
+       Item[0, Frame -> GrayLevel[0]]}, {
+       Item[0, Frame -> GrayLevel[0]], 
+       Item[0, Frame -> GrayLevel[0]]}, {
+       Item[0, Frame -> GrayLevel[0]], 
+       Item[0, Frame -> GrayLevel[0]]}}], 20], "IsHook: ", True],
   Editable->False]], "Print",
- CellChangeTimes->{3.621439772362715*^9, 3.621596384833634*^9}],
+ CellChangeTimes->{3.621439772362715*^9, 3.621596384833634*^9, 
+  3.621674599558069*^9, 3.621674743504582*^9, 3.621675733118312*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -299,30 +301,24 @@ Cell[BoxData[
     TagBox[GridBox[{
        {
         ItemBox["0",
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False], 
         ItemBox["0",
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False]},
        {
         ItemBox["0",
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False], 
         ItemBox[
          RowBox[{"-", "1"}],
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False]},
        {
         ItemBox["0",
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False], 
         ItemBox["0",
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False]}
       },
@@ -344,15 +340,15 @@ Cell[BoxData[
        Item[3, Frame -> GrayLevel[0]]}}], 20], " ", 
    Style[
     Grid[{{
-       Item[0, Frame -> GrayLevel[0], Alignment -> Right], 
-       Item[0, Frame -> GrayLevel[0], Alignment -> Right]}, {
-       Item[0, Frame -> GrayLevel[0], Alignment -> Right], 
-       Item[-1, Frame -> GrayLevel[0], Alignment -> Right]}, {
-       Item[0, Frame -> GrayLevel[0], Alignment -> Right], 
-       Item[0, Frame -> GrayLevel[0], Alignment -> Right]}}], 20], "IsHook: ",
-    True],
+       Item[0, Frame -> GrayLevel[0]], 
+       Item[0, Frame -> GrayLevel[0]]}, {
+       Item[0, Frame -> GrayLevel[0]], 
+       Item[-1, Frame -> GrayLevel[0]]}, {
+       Item[0, Frame -> GrayLevel[0]], 
+       Item[0, Frame -> GrayLevel[0]]}}], 20], "IsHook: ", True],
   Editable->False]], "Print",
- CellChangeTimes->{3.621439772362715*^9, 3.621596384841401*^9}],
+ CellChangeTimes->{3.621439772362715*^9, 3.621596384833634*^9, 
+  3.621674599558069*^9, 3.621674743504582*^9, 3.62167573311952*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -391,30 +387,24 @@ Cell[BoxData[
     TagBox[GridBox[{
        {
         ItemBox["0",
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False], 
         ItemBox[
          RowBox[{"-", "2"}],
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False]},
        {
         ItemBox["0",
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False], 
         ItemBox["0",
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False]},
        {
         ItemBox["0",
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False], 
         ItemBox["0",
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False]}
       },
@@ -436,15 +426,15 @@ Cell[BoxData[
        Item[3, Frame -> GrayLevel[0]]}}], 20], " ", 
    Style[
     Grid[{{
-       Item[0, Frame -> GrayLevel[0], Alignment -> Right], 
-       Item[-2, Frame -> GrayLevel[0], Alignment -> Right]}, {
-       Item[0, Frame -> GrayLevel[0], Alignment -> Right], 
-       Item[0, Frame -> GrayLevel[0], Alignment -> Right]}, {
-       Item[0, Frame -> GrayLevel[0], Alignment -> Right], 
-       Item[0, Frame -> GrayLevel[0], Alignment -> Right]}}], 20], "IsHook: ",
-    True],
+       Item[0, Frame -> GrayLevel[0]], 
+       Item[-2, Frame -> GrayLevel[0]]}, {
+       Item[0, Frame -> GrayLevel[0]], 
+       Item[0, Frame -> GrayLevel[0]]}, {
+       Item[0, Frame -> GrayLevel[0]], 
+       Item[0, Frame -> GrayLevel[0]]}}], 20], "IsHook: ", True],
   Editable->False]], "Print",
- CellChangeTimes->{3.621439772362715*^9, 3.6215963848439293`*^9}],
+ CellChangeTimes->{3.621439772362715*^9, 3.621596384833634*^9, 
+  3.621674599558069*^9, 3.621674743504582*^9, 3.621675733120627*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -483,30 +473,24 @@ Cell[BoxData[
     TagBox[GridBox[{
        {
         ItemBox["0",
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False], 
         ItemBox[
          RowBox[{"-", "2"}],
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False]},
        {
         ItemBox["0",
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False], 
         ItemBox["0",
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False]},
        {
         ItemBox["1",
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False], 
         ItemBox["0",
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False]}
       },
@@ -528,15 +512,15 @@ Cell[BoxData[
        Item[5, Frame -> GrayLevel[0]]}}], 20], " ", 
    Style[
     Grid[{{
-       Item[0, Frame -> GrayLevel[0], Alignment -> Right], 
-       Item[-2, Frame -> GrayLevel[0], Alignment -> Right]}, {
-       Item[0, Frame -> GrayLevel[0], Alignment -> Right], 
-       Item[0, Frame -> GrayLevel[0], Alignment -> Right]}, {
-       Item[1, Frame -> GrayLevel[0], Alignment -> Right], 
-       Item[0, Frame -> GrayLevel[0], Alignment -> Right]}}], 20], "IsHook: ",
-    True],
+       Item[0, Frame -> GrayLevel[0]], 
+       Item[-2, Frame -> GrayLevel[0]]}, {
+       Item[0, Frame -> GrayLevel[0]], 
+       Item[0, Frame -> GrayLevel[0]]}, {
+       Item[1, Frame -> GrayLevel[0]], 
+       Item[0, Frame -> GrayLevel[0]]}}], 20], "IsHook: ", True],
   Editable->False]], "Print",
- CellChangeTimes->{3.621439772362715*^9, 3.621596384845028*^9}],
+ CellChangeTimes->{3.621439772362715*^9, 3.621596384833634*^9, 
+  3.621674599558069*^9, 3.621674743504582*^9, 3.6216757331216087`*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -575,30 +559,24 @@ Cell[BoxData[
     TagBox[GridBox[{
        {
         ItemBox["0",
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False], 
         ItemBox[
          RowBox[{"-", "2"}],
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False]},
        {
         ItemBox["1",
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False], 
         ItemBox["0",
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False]},
        {
         ItemBox["1",
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False], 
         ItemBox["0",
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False]}
       },
@@ -620,15 +598,15 @@ Cell[BoxData[
        Item[5, Frame -> GrayLevel[0]]}}], 20], " ", 
    Style[
     Grid[{{
-       Item[0, Frame -> GrayLevel[0], Alignment -> Right], 
-       Item[-2, Frame -> GrayLevel[0], Alignment -> Right]}, {
-       Item[1, Frame -> GrayLevel[0], Alignment -> Right], 
-       Item[0, Frame -> GrayLevel[0], Alignment -> Right]}, {
-       Item[1, Frame -> GrayLevel[0], Alignment -> Right], 
-       Item[0, Frame -> GrayLevel[0], Alignment -> Right]}}], 20], "IsHook: ",
-    True],
+       Item[0, Frame -> GrayLevel[0]], 
+       Item[-2, Frame -> GrayLevel[0]]}, {
+       Item[1, Frame -> GrayLevel[0]], 
+       Item[0, Frame -> GrayLevel[0]]}, {
+       Item[1, Frame -> GrayLevel[0]], 
+       Item[0, Frame -> GrayLevel[0]]}}], 20], "IsHook: ", True],
   Editable->False]], "Print",
- CellChangeTimes->{3.621439772362715*^9, 3.621596384846098*^9}],
+ CellChangeTimes->{3.621439772362715*^9, 3.621596384833634*^9, 
+  3.621674599558069*^9, 3.621674743504582*^9, 3.621675733122573*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -667,30 +645,24 @@ Cell[BoxData[
     TagBox[GridBox[{
        {
         ItemBox["0",
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False], 
         ItemBox[
          RowBox[{"-", "2"}],
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False]},
        {
         ItemBox["0",
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False], 
         ItemBox["0",
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False]},
        {
         ItemBox["1",
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False], 
         ItemBox["0",
-         Alignment->Right,
          Frame->GrayLevel[0],
          StripOnInput->False]}
       },
@@ -712,15 +684,15 @@ Cell[BoxData[
        Item[6, Frame -> GrayLevel[0]]}}], 20], " ", 
    Style[
     Grid[{{
-       Item[0, Frame -> GrayLevel[0], Alignment -> Right], 
-       Item[-2, Frame -> GrayLevel[0], Alignment -> Right]}, {
-       Item[0, Frame -> GrayLevel[0], Alignment -> Right], 
-       Item[0, Frame -> GrayLevel[0], Alignment -> Right]}, {
-       Item[1, Frame -> GrayLevel[0], Alignment -> Right], 
-       Item[0, Frame -> GrayLevel[0], Alignment -> Right]}}], 20], "IsHook: ",
-    True],
+       Item[0, Frame -> GrayLevel[0]], 
+       Item[-2, Frame -> GrayLevel[0]]}, {
+       Item[0, Frame -> GrayLevel[0]], 
+       Item[0, Frame -> GrayLevel[0]]}, {
+       Item[1, Frame -> GrayLevel[0]], 
+       Item[0, Frame -> GrayLevel[0]]}}], 20], "IsHook: ", True],
   Editable->False]], "Print",
- CellChangeTimes->{3.621439772362715*^9, 3.621596384847082*^9}]
+ CellChangeTimes->{3.621439772362715*^9, 3.621596384833634*^9, 
+  3.621674599558069*^9, 3.621674743504582*^9, 3.621675733123497*^9}]
 }, Open  ]]
 }, Open  ]]
 },
@@ -729,3 +701,4 @@ WindowMargins->{{0, Automatic}, {Automatic, 0}},
 FrontEndVersion->"9.0 for Linux x86 (64-bit) (February 7, 2013)",
 StyleDefinitions->"Default.nb"
 ]
+

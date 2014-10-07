@@ -11,6 +11,7 @@ MapIJ::"bananas"
 FilterIJV::"bananas"
 FilterIJ::"bananas"
 Shape::"bananas"
+HookTableau::"bananas"
 
 Begin["`Private`"] (* Begin Private Context *) 
 
@@ -64,6 +65,14 @@ Swap[T_, a_, b_]:= Module[{pa,pb},
 		Throw["Element(s) not in tableau"];
 	]
 ]
+
+HookTableau[f_Function,lambda_]:=Table[
+	f[i,j],
+	{i,1,Length[lambda]},
+	{j,1,lambda[[i]]}
+];
+
+HookTableau[f_List,lambda_]:=f;
 
 End[] (* End Private Context *)
 

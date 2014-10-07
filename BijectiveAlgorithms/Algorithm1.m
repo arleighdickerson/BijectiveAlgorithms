@@ -16,11 +16,18 @@ Algorithm1[A_,f_,i0_,j0_]:=Module[{i1,j1,i2,j2,a,B,g},
 	B = AlgorithmP[A,a];
 
 	{i2,j2} = Flatten[Position[B,a]];
-	
-	g[i_,j_]:=f[i,j];
-	For[i = i1, i < i2, i++, g[i,j1] = f[i+1,j1] - 1];
-	g[i2,j1] = j2 - j1;
-	
+	g = Table[
+		If[
+			i1 <= i <= i2 && j == j1,
+			If[
+				i < i2,
+				f[[i + 1, j]] - 1,
+				j2 - j1
+			],
+			f[[i,j]]
+		],
+		{i,1,Length[A]},{j,1,Length[A[[i]]]}
+	];
 	{B,g,i1,j1}
 ]
 
