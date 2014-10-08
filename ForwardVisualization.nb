@@ -1,0 +1,192 @@
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "PlotTableau", "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"<<", " ", "BijectiveAlgorithms`"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"https", ":"}], "//", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{"reference", ".", "wolfram", ".", "com"}], "/", 
+            "language"}], "/", "tutorial"}], "/", 
+          RowBox[{"IntroductionToDynamic", ".", "html"}]}], 
+         "\[IndentingNewLine]", 
+         RowBox[{"https", ":"}]}]}], "//", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"reference", ".", "wolfram", ".", "com"}], "/", 
+           "language"}], "/", "tutorial"}], "/", 
+         RowBox[{"IntroductionToControlObjects", ".", "html"}]}], 
+        "\[IndentingNewLine]", 
+        RowBox[{"https", ":"}]}]}], "//", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"reference", ".", "wolfram", ".", "com"}], "/", 
+          "language"}], "/", "tutorial"}], "/", 
+        RowBox[{"IntroductionToManipulate", ".", "html"}]}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"https", ":"}]}]}], "//", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"reference", ".", "wolfram", ".", "com"}], "/", "language"}],
+         "/", "tutorial"}], "/", 
+       RowBox[{"AdvancedDynamicFunctionality", ".", "html"}]}], 
+      "\[IndentingNewLine]", 
+      RowBox[{"https", ":"}]}]}], "//", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"reference", ".", "wolfram", ".", "com"}], "/", "language"}], 
+      "/", "tutorial"}], "/", 
+     RowBox[{"AdvancedManipulateFunctionality", ".", "html"}]}]}], 
+   "\[IndentingNewLine]", "*)"}]}]}], "Input",
+ CellChangeTimes->{{3.6217755604019327`*^9, 3.6217756022590446`*^9}, {
+  3.621776164756845*^9, 3.6217761942439127`*^9}, {3.62177762432178*^9, 
+  3.621777650798162*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"Sin", "[", 
+      RowBox[{"x", " ", 
+       RowBox[{"(", 
+        RowBox[{"1", "+", 
+         RowBox[{"a", " ", "x"}]}], ")"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "0", ",", "6"}], "}"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", "0", ",", "2"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.621775603502384*^9, 3.621775605041876*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 0, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`a$$], 0, 2}}, Typeset`size$$ = {360., {105., 110.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`a$14399$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`a$$ = 0}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`a$$, $CellContext`a$14399$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Plot[
+        Sin[$CellContext`x (
+          1 + $CellContext`a$$ $CellContext`x)], {$CellContext`x, 0, 6}], 
+      "Specifications" :> {{$CellContext`a$$, 0, 2}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{407., {149., 156.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.621775605897604*^9, 3.621777488263566*^9, {3.6217775328931847`*^9, 
+   3.621777550550589*^9}, {3.6217776285809298`*^9, 3.6217776744081173`*^9}, {
+   3.6217778942104807`*^9, 3.6217779168900833`*^9}, {3.621777951488633*^9, 
+   3.621777971623707*^9}, {3.621778032451194*^9, 3.621778057891678*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"x", " ", "=", " ", "1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Dynamic", "[", 
+  SuperscriptBox["x", "2"], "]"}]}], "Input",
+ CellChangeTimes->{{3.621775842103112*^9, 3.6217758613671722`*^9}, {
+  3.621776012107072*^9, 3.621776019845868*^9}}],
+
+Cell[BoxData[
+ DynamicBox[ToBoxes[$CellContext`x^2, StandardForm],
+  ImageSizeCache->{27., {0., 10.}}]], "Output",
+ CellChangeTimes->{{3.621776012351225*^9, 3.6217760202152777`*^9}, 
+   3.621777488291078*^9, {3.6217775329537067`*^9, 3.621777550581807*^9}, {
+   3.621777628624298*^9, 3.621777674452428*^9}, {3.621777894241765*^9, 
+   3.621777916927902*^9}, {3.6217779515488663`*^9, 3.621777971655918*^9}, {
+   3.621778032503166*^9, 3.621778057920557*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"x", " ", "=", " ", "24"}]], "Input",
+ CellChangeTimes->{{3.62177601325414*^9, 3.6217760261673317`*^9}}],
+
+Cell[BoxData["24"], "Output",
+ CellChangeTimes->{{3.6217760153877697`*^9, 3.62177602644064*^9}, 
+   3.6217774883240547`*^9, {3.621777532960566*^9, 3.621777550616157*^9}, {
+   3.621777628654643*^9, 3.62177767451374*^9}, {3.621777894268641*^9, 
+   3.621777916931738*^9}, {3.621777951555009*^9, 3.621777971689659*^9}, {
+   3.621778032511128*^9, 3.6217780579393053`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"PlotTableau", "[", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "2"}], "}"}], "}"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.621777475567079*^9, 3.6217774823808527`*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     ItemBox["1",
+      Frame->GrayLevel[0],
+      StripOnInput->False], 
+     ItemBox["2",
+      Frame->GrayLevel[0],
+      StripOnInput->False]}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{
+  3.6217776745356407`*^9, {3.621777892365716*^9, 3.621777916950365*^9}, {
+   3.621777951582515*^9, 3.6217779716933813`*^9}, {3.621778032533997*^9, 
+   3.621778057957378*^9}}]
+}, Open  ]]
+},
+WindowSize->{1857, 1056},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"9.0 for Linux x86 (64-bit) (February 7, 2013)",
+StyleDefinitions->"Default.nb"
+]
+

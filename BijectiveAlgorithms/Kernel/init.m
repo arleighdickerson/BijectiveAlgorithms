@@ -5,6 +5,7 @@ On[Assert];
 Get["BijectiveAlgorithms`Utils`"]
 Get["BijectiveAlgorithms`Predicates`"]
 Get["BijectiveAlgorithms`Maps`"]
+Get["BijectiveAlgorithms`Visualization`"]
 
 Get["BijectiveAlgorithms`AlgorithmP`"]
 Get["BijectiveAlgorithms`AlgorithmPPrime`"]
